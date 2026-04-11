@@ -1,5 +1,4 @@
 <div align="center">
-  <img src="https://cdn.discordapp.com/embed/avatars/902241075316535366.png" alt="wulnrydev" width="100" />
   <h1>wulnrydev — Personal Portfolio</h1>
   <p>
     <b>Modern interfaces, advanced applications, Minecraft solutions & Discord bots.</b>
