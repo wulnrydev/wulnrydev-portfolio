@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="wulnrydev" width="100" />
+  <img src="https://cdn.discordapp.com/embed/avatars/902241075316535366.png" alt="wulnrydev" width="100" />
   <h1>wulnrydev — Personal Portfolio</h1>
   <p>
     <b>Modern interfaces, advanced applications, Minecraft solutions & Discord bots.</b>
@@ -17,7 +17,7 @@
 <br/>
 
 <div align="center">
-  <img src="images/screenshot1.png" alt="wulnrydev Portfolio Preview" width="800" style="border-radius: 12px;" />
+  <img src="images/screenshot.png" alt="wulnrydev Portfolio Preview" width="800" style="border-radius: 12px;" />
   <br/><br/>
   <img src="images/screenshot2.png" alt="Preview 2" width="395" style="border-radius: 12px;" />&nbsp;
   <img src="images/screenshot3.png" alt="Preview 3" width="395" style="border-radius: 12px;" />
