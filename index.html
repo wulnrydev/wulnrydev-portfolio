@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>wulnrydev — Portfolyo</title>
+  <meta name="title" content="wulnrydev — Portfolyo">
+  <meta name="description"
+    content="Modern arayüzler, gelişmiş uygulamalar, Minecraft çözümleri ve Discord botları tasarlıyor & geliştiriyorum.">
+  <meta name="author" content="wulnrydev">
+  <meta name="keywords"
+    content="wulnrydev, wulnry, developer, portfolyo, web developer, discord bot, minecraft plugin, spigot, paper, full-stack">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wulnry.dev/">
+  <meta property="og:title" content="wulnrydev — Portfolyo">
+  <meta property="og:description"
+    content="Modern arayüzler, gelişmiş uygulamalar, Minecraft çözümleri ve Discord botları tasarlıyor & geliştiriyorum.">
+  <meta property="og:image"
+    content="https://cdn.dribbble.com/userupload/17416514/file/original-47bb3baba5123d995ac2c11a84deede1.mp4">
+  <meta name="theme-color" content="#007aff">
+
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wulnry.dev/">
+  <meta property="twitter:title" content="wulnrydev — Portfolyo">
+  <meta property="twitter:description"
+    content="Modern arayüzler, gelişmiş uygulamalar, Minecraft çözümleri ve Discord botları tasarlıyor & geliştiriyorum.">
+  <meta property="twitter:image"
+    content="https://cdn.dribbble.com/userupload/17416514/file/original-47bb3baba5123d995ac2c11a84deede1.mp4">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+    <linearGradient id="wave-grad-1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#007aff" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#af52de" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="wave-grad-2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34c759" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#007aff" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="wave-grad-3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff9f0a" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#ff375f" stop-opacity="0.05" />
+    </linearGradient>
+  </svg>
+
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+
+
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="ambient ambient-3"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <nav id="nav">
+    <div class="nav-logo">wulnry<span>dev</span></div>
+
+    <!-- Mobile Hamburger -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#about" class="nav-link" data-i18n="nav_about">Hakkımda</a>
+      <a href="#skills" class="nav-link" data-i18n="nav_skills">Yetenekler</a>
+      <a href="#projects" class="nav-link" data-i18n="nav_projects">Projeler</a>
+      <a href="#testimonials" class="nav-link" data-i18n="nav_testimonials">Referanslar</a>
+      <a href="#contact" class="nav-link" data-i18n="nav_contact">İletişim</a>
+
+      <div class="lang-toggle">
+        <span data-lang="tr" class="active"><img src="images/TR.svg" alt="TR"></span>
+        <span data-lang="en"><img src="images/US.svg" alt="EN"></span>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-particles" id="heroParticles"></div>
+      <div class="hero-inner">
+
+        <div class="dy-lanyard" id="lanyard-card">
+          <div class="ly-avatar-wrapper">
+            <img id="ly-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Discord Avatar">
+            <div class="ly-status-dot offline" id="ly-status"></div>
+          </div>
+          <div class="ly-info">
+            <div class="ly-name" id="ly-name" data-i18n="ly_loading">Yükleniyor...</div>
+            <div class="ly-activity" id="ly-activity" data-i18n="ly_search">Discord durumu aranıyor</div>
+          </div>
+        </div>
+
+        <h1 data-i18n="hero_hi">Merhaba, ben<br><span class="accent">wulnrydev</span></h1>
+        <p class="hero-sub" data-i18n="hero_sub">Modern arayüzler, gelişmiş uygulamalar, <span class="accent">Minecraft
+            çözümleri</span> ve
+          Discord botları tasarlıyor & geliştiriyorum.</p>
+
+        <div class="hero-actions">
+          <a href="https://github.com/wulnrydev" target="_blank" class="btn btn-primary">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+            </svg>
+            GitHub
+          </a>
+          <a href="#contact" class="btn btn-secondary" data-i18n="hero_contact">İletişime Geç →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WAVE 1 -->
+    <svg class="section-wave" viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <path fill="url(#wave-grad-1)"
+        d="M0,32L80,26.7C160,21,320,11,480,21.3C640,32,800,64,960,64C1120,64,1280,32,1360,16L1440,0L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z">
+      </path>
+    </svg>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-header">
+        <h2 class="sr-only">Hakkımda - Hikayem</h2>
+        <img src="images/story.svg" alt="Hakkımda" class="section-icon">
+        <p class="section-desc" data-i18n="about_title">Oyundan koda uzanan bir yolculuk</p>
+      </div>
+      <div class="about-grid">
+        <div class="card card-span">
+          <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">
+            <div style="flex-shrink:0">
+              <div class="card-icon card-icon-blue">🗺️</div>
+            </div>
+            <div class="story-timeline">
+              <div class="story-item">
+                <div class="story-dot story-dot-blue"></div>
+                <div class="story-item-text" data-i18n="about_story_1_desc"><strong>Başlangıç —
+                    Minecraft</strong>Başlarda Minecraft sunucularında
+                  aktif bir oyuncuydum. Kendi sunucumu kurmak isteğiyle yazılım dünyasına adım attım.</div>
+              </div>
+              <div class="story-item">
+                <div class="story-dot story-dot-purple"></div>
+                <div class="story-item-text" data-i18n="about_story_2_desc"><strong>İlk Adımlar — Plugin
+                    Geliştirme</strong>Spigot/Paper API ile Java
+                  öğrenerek Minecraft eklentileri yazmaya başladım. Bu süreç programlamaya olan tutkumu ateşledi.</div>
+              </div>
+              <div class="story-item">
+                <div class="story-dot story-dot-green"></div>
+                <div class="story-item-text" data-i18n="about_story_3_desc"><strong>Büyüme — Full Stack</strong>Web
+                  teknolojilerine geçiş yaparak
+                  React, Node.js ve veritabanı sistemlerini öğrendim. 3+ yıldır aktif çalışıyorum.</div>
+              </div>
+              <div class="story-item">
+                <div class="story-dot story-dot-orange"></div>
+                <div class="story-item-text" data-i18n="about_story_4_desc"><strong>Günümüz — Vibe Coding</strong>Son
+                  dönemde vibe coding akımına ilgi
+                  duyuyor, modern araçlarla yaratıcı projeler geliştirmeye devam ediyorum.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon card-icon-green">📊</div>
+          <h3 data-i18n="about_exp">Deneyim</h3>
+          <div class="stat-grid" style="margin-top:10px">
+            <div class="stat-item">
+              <div class="stat-num">6<span class="accent">+</span></div>
+              <div class="stat-label" data-i18n="about_exp_y">Yıl Deneyim</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">15<span class="accent">+</span></div>
+              <div class="stat-label" data-i18n="about_exp_t">Teknoloji</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">∞</div>
+              <div class="stat-label" data-i18n="about_exp_l">Öğrenme</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon card-icon-purple">🎯</div>
+          <h3 data-i18n="about_focus">Odak Alanları</h3>
+          <p data-i18n="about_focus_desc">Full-stack web geliştirme, Minecraft plugin geliştirme, açık kaynak katkıları
+            ve vibe coding. Performans
+            odaklı ve ölçeklenebilir çözümler üretiyorum.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WAVE 2 -->
+    <svg class="section-wave" viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <path fill="url(#wave-grad-2)"
+        d="M0,64L80,53.3C160,43,320,21,480,26.7C640,32,800,64,960,69.3C1120,75,1280,53,1360,42.7L1440,32L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z">
+      </path>
+    </svg>
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-header">
+        <h2 class="sr-only">Yetenekler</h2>
+        <img src="images/skills.svg" alt="Yetenekler" class="section-icon">
+        <p class="section-desc" data-i18n="skills_desc">Kullandığım teknolojiler ve araçlar</p>
+      </div>
+      <div class="skills-showcase" aria-hidden="true">
+        <div class="skills-showcase-grid"></div>
+        <div class="skills-showcase-glow skills-showcase-glow-a"></div>
+        <div class="skills-showcase-glow skills-showcase-glow-b"></div>
+        <div class="skills-network">
+          <div class="skills-network-orbit orbit-a"></div>
+          <div class="skills-network-orbit orbit-b"></div>
+          <div class="skills-network-orbit orbit-c"></div>
+          <div class="skills-network-flare flare-a"></div>
+          <div class="skills-network-flare flare-b"></div>
+          <span class="network-core"></span>
+          <canvas id="skillsNetworkCanvas" class="skills-network-canvas"></canvas>
+        </div>
+      </div>
+      <div class="skills-wrapper">
+
+        <div class="skills-category">
+          <div class="skills-cat-title">Frontend</div>
+          <div class="skills-icon-grid">
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#e8f8fd">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="2.2" fill="#61dafb" />
+                  <ellipse cx="12" cy="12" rx="10" ry="3.8" stroke="#61dafb" stroke-width="1.6" fill="none" />
+                  <ellipse cx="12" cy="12" rx="10" ry="3.8" stroke="#61dafb" stroke-width="1.6" fill="none"
+                    transform="rotate(60 12 12)" />
+                  <ellipse cx="12" cy="12" rx="10" ry="3.8" stroke="#61dafb" stroke-width="1.6" fill="none"
+                    transform="rotate(120 12 12)" />
+                </svg>
+              </div>
+              <div class="skill-name">React</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#f0f0f0">
+                <img src="images/nextjs.svg" alt="Next.js">
+              </div>
+              <div class="skill-name">Next.js</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#dbeafe">
+                <img src="images/typescript.svg" alt="TypeScript">
+              </div>
+              <div class="skill-name">TypeScript</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#e0f7fa">
+                <svg viewBox="0 0 24 24" fill="#38bdf8">
+                  <path
+                    d="M12 6C9.33 6 7.67 7.33 7 10c1-1.33 2.17-1.83 3.5-1.5.76.19 1.3.74 1.9 1.35C13.37 10.85 14.5 12 17 12c2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.9-1.35C15.63 7.15 14.5 6 12 6zm-5 6C4.33 12 2.67 13.33 2 16c1-1.33 2.17-1.83 3.5-1.5.76.19 1.3.74 1.9 1.35C8.37 16.85 9.5 18 12 18c2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.9-1.35C10.63 13.15 9.5 12 7 12z" />
+                </svg>
+              </div>
+              <div class="skill-name">Tailwind</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#ede9fe">
+                <svg viewBox="0 0 24 24">
+                  <path d="M21 3L13.5 17.5 12 14.5 18 3H21Z" fill="#646cff" />
+                  <path d="M3 3L12 20.5 8.5 14 15 3H3Z" fill="#ffbd44" />
+                </svg>
+              </div>
+              <div class="skill-name">Vite</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#fff0eb">
+                <img src="images/html5.svg" alt="HTML">
+              </div>
+              <div class="skill-name">HTML</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#eff6ff">
+                <img src="images/css.svg" alt="CSS">
+              </div>
+              <div class="skill-name">CSS</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#fefce8">
+                <svg viewBox="0 0 24 24">
+                  <rect width="24" height="24" rx="3" fill="#f7df1e" />
+                  <path
+                    d="M7 17.5c.5.8 1.1 1.5 2.3 1.5s2-.7 2-1.7V12H9.7v5.3c0 .5-.2.8-.7.8s-.7-.3-1-.7L7 17.5zm6 .3c.6.9 1.4 1.5 2.8 1.5 1.5 0 2.5-.8 2.5-2 0-1.1-.7-1.6-1.9-2.1l-.7-.3c-.6-.3-.9-.5-.9-.9 0-.4.3-.6.7-.6.4 0 .7.2.9.6l1.3-.8c-.5-.9-1.3-1.3-2.2-1.3-1.4 0-2.3.9-2.3 2 0 1.1.6 1.6 1.8 2.1l.7.3c.7.3 1 .5 1 1 0 .5-.4.8-1 .8-.7 0-1.1-.4-1.5-.9L13 17.8z"
+                    fill="#333" />
+                </svg>
+              </div>
+              <div class="skill-name">JavaScript</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-category">
+          <div class="skills-cat-title">Backend</div>
+          <div class="skills-icon-grid">
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#f0fdf4">
+                <img src="images/node-js.svg" alt="Node.js">
+              </div>
+              <div class="skill-name">Node.js</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#f5f5f5">
+                <img src="images/express.svg" alt="Express">
+              </div>
+              <div class="skill-name">Express</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#fff8ee">
+                <svg viewBox="0 0 24 24" fill="#ed8b00">
+                  <path
+                    d="M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149zm-.546-2.525s-1.028.761.542.924c2.032.209 3.636.227 6.413-.308 0 0 .384.389.987.602-5.679 1.661-12.007.13-7.942-1.218zm4.738-4.657c1.157 1.333-.304 2.533-.304 2.533s2.939-1.518 1.589-3.418c-1.261-1.772-2.228-2.652 3.007-5.688 0-.001-8.216 2.051-4.292 6.573zm5.707 9.332s.679.559-.747.991c-2.712.822-11.288 1.069-13.669.033-.856-.373.75-.89 1.254-.998.527-.114.828-.093.828-.093-.953-.671-6.156 1.317-2.643 1.887 9.58 1.553 17.462-.7 14.977-1.82zm-10.006-7.412s-4.365 1.037-1.545 1.413c1.191.159 3.567.123 5.778-.062 1.808-.152 3.623-.476 3.623-.476s-.637.272-1.098.587c-4.429 1.165-12.986.623-10.522-.568 2.082-1.006 3.764-.894 3.764-.894zm7.826 4.374c4.503-2.34 2.421-4.589.968-4.285-.355.074-.515.138-.515.138s.132-.207.385-.297c2.875-1.011 5.086 2.981-.928 4.562 0-.001.07-.062.09-.118z" />
+                </svg>
+              </div>
+              <div class="skill-name">Java</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#eff6ff">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4f8ef7" stroke-width="1.8" stroke-linecap="round">
+                  <path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 6l-4 12" />
+                </svg>
+              </div>
+              <div class="skill-name">REST API</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#f3f0ff">
+                <svg viewBox="0 0 24 24">
+                  <ellipse cx="12" cy="12" rx="10.5" ry="7" fill="#8892bf" />
+                  <ellipse cx="12" cy="12" rx="10.5" ry="7" fill="#4f5b93" opacity=".6" /><text x="5" y="15.5"
+                    font-size="7" font-weight="bold" fill="white" font-family="Arial">php</text>
+                </svg>
+              </div>
+              <div class="skill-name">PHP</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-category">
+          <div class="skills-cat-title" data-i18n="cat_db">Veritabanı</div>
+          <div class="skills-icon-grid">
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#eff6ff">
+                <img src="images/postgresql.svg" alt="PostgreSQL">
+              </div>
+              <div class="skill-name">PostgreSQL</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#e8f4fd">
+                <img src="images/mysql.svg" alt="MySQL">
+              </div>
+              <div class="skill-name">MySQL</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#f0fdf4">
+                <img src="images/mongodb.svg" alt="MongoDB">
+              </div>
+              <div class="skill-name">MongoDB</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#fff1f0">
+                <img src="images/redis.svg" alt="Redis">
+              </div>
+              <div class="skill-name">Redis</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-category">
+          <div class="skills-cat-title" data-i18n="cat_game">Oyun & Discord</div>
+          <div class="skills-icon-grid">
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#eef2ff">
+                <img src="images/discord.svg" alt="discord.js">
+              </div>
+              <div class="skill-name">discord.js</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon-wrap" style="background:#f0fdf4">
+                <img src="images/minecraft.svg" alt="Spigot / Paper">
+              </div>
+              <div class="skill-name">Spigot / Paper</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- WAVE 3 -->
+    <svg class="section-wave" viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <path fill="url(#wave-grad-3)"
+        d="M0,32L80,42.7C160,53,320,75,480,80C640,85,800,75,960,58.7C1120,43,1280,21,1360,10.7L1440,0L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z">
+      </path>
+    </svg>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-header">
+        <h2 class="sr-only">Öne Çıkan Projeler</h2>
+        <img src="images/projects.svg" alt="Projeler" class="section-icon">
+        <p class="section-desc" data-i18n="proj_desc">GitHub'da paylaştığım açık kaynak projelerim</p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon-wrap" style="background:var(--green-soft)">🛡️</div>
+            <div class="project-name">wChatShield</div>
+            <div class="project-desc" data-i18n="proj_1_desc">Minecraft sunucuları için yüksek performanslı ve modern
+              sohbet yönetim eklentisi.
+            </div>
+          </div>
+          <div class="project-footer">
+            <div class="project-lang"><span class="lang-dot" style="background:#ed8b00"></span>Java</div>
+            <a href="https://github.com/wulnrydev/wChatShield" target="_blank" class="project-link">GitHub
+              <span>→</span></a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon-wrap" style="background:var(--purple-soft)">🤖</div>
+            <div class="project-name">HaxEm Studio Bot</div>
+            <div class="project-desc" data-i18n="proj_2_desc">HaxEm Studio için geliştirdiğim Discord botu. Sunucu
+              yönetimini kolaylaştıran
+              pratik komutlarla donatılmış.</div>
+          </div>
+          <div class="project-footer">
+            <div class="project-lang"><span class="lang-dot" style="background:#f7df1e"></span>JavaScript</div>
+            <a href="https://github.com/wulnrydev/HaxEm-Studio-Bot" target="_blank" class="project-link">GitHub
+              <span>→</span></a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon-wrap" style="background:var(--orange-soft)">⛏️</div>
+            <div class="project-name">wChunkBlockLimiter</div>
+            <div class="project-desc" data-i18n="proj_3_desc">Minecraft sunucuları için chunk bazlı block limitleyici.
+              Performans odaklı mimari
+              ile sunucu sağlığını korur.</div>
+          </div>
+          <div class="project-footer">
+            <div class="project-lang"><span class="lang-dot" style="background:#ed8b00"></span>Java</div>
+            <a href="https://github.com/wulnrydev/wChunkBlockLimiter" target="_blank" class="project-link">GitHub
+              <span>→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <div class="section-header">
+        <h2 class="sr-only">Referanslar</h2>
+        <img src="images/star.svg" alt="Referanslar" class="section-icon">
+        <p class="section-desc" data-i18n="test_desc">Birlikte çalıştığım kişilerin ve sunucuların düşünceleri</p>
+      </div>
+
+      <div class="marquee-wrapper">
+        <div class="marquee-track">
+          <!-- CARD 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="t-avatar" style="background:var(--accent-soft);color:var(--accent)">M</div>
+              <div>
+                <div class="t-name">Mehmet T.</div>
+                <div class="t-role" data-i18n="test_1_role">Sunucu Sahibi</div>
+              </div>
+            </div>
+            <p class="t-text" data-i18n="test_1_desc">"Oyun sunucumun websitesi çok yavaştı, yaptığı optimizasyon
+              işlemlerinden sonra site çok
+              hızlandı ve daha modern oldu."</p>
+          </div>
+          <!-- CARD 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="t-avatar" style="background:var(--purple-soft);color:var(--purple)">R</div>
+              <div>
+                <div class="t-name">Ramazan Ç.</div>
+                <div class="t-role" data-i18n="test_2_role">Sunucu Sahibi</div>
+              </div>
+            </div>
+            <p class="t-text" data-i18n="test_2_desc">"Minecraft sunucum için profesyonel olarak eklentiler geliştirdi
+              ve bize tam kontrol
+              sağladı."</p>
+          </div>
+          <!-- CARD 3 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="t-avatar" style="background:var(--green-soft);color:var(--green)">C</div>
+              <div>
+                <div class="t-name">Can B.</div>
+                <div class="t-role" data-i18n="test_3_role">Proje Yöneticisi</div>
+              </div>
+            </div>
+            <p class="t-text" data-i18n="test_3_desc">"Discord botumuzdaki yaşanan çökmeleri ve gecikmeleri anında
+              tespit edip çözdü. İşinde
+              gerçekten uzman."</p>
+          </div>
+          <!-- CARD 4 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="t-avatar" style="background:var(--orange-soft);color:var(--orange)">A</div>
+              <div>
+                <div class="t-name">Ali K.</div>
+                <div class="t-role" data-i18n="test_4_role">Geliştirici</div>
+              </div>
+            </div>
+            <p class="t-text" data-i18n="test_4_desc">"Açık kaynak projesini kendi sistemimize entegre etmemizde çok
+              yardımcı oldu. Tertemiz bir
+              kod yapısı var."</p>
+          </div>
+          <!-- CARD 5 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="t-avatar" style="background:var(--accent-soft);color:var(--accent)">E</div>
+              <div>
+                <div class="t-name">Emre Y.</div>
+                <div class="t-role" data-i18n="test_5_role">Topluluk Yöneticisi</div>
+              </div>
+            </div>
+            <p class="t-text" data-i18n="test_5_desc">"Performans sorunları yaşadığımız eklentiyi baştan yazarak lagı
+              tamamen yok etti. Gönül
+              rahatlığıyla çalışabilirsiniz."</p>
+          </div>
+
+          <!-- DUPLICATED CARDS FOR INFINITE MARQUEE SCROLL -->
+          <div class="testimonial-card" aria-hidden="true">
+            <div class="testimonial-header">
+              <div class="t-avatar" style="background:var(--accent-soft);color:var(--accent)">M</div>
+              <div>
+                <div class="t-name">Mehmet T.</div>
+                <div class="t-role">Sunucu Sahibi</div>
+              </div>
+            </div>
+            <p class="t-text">"Oyun sunucumun websitesi çok yavaştı, yaptığı optimizasyon işlemlerinden sonra site çok
+              hızlandı ve daha modern oldu."</p>
+          </div>
+          <div class="testimonial-card" aria-hidden="true">
+            <div class="testimonial-header">
+              <div class="t-avatar" style="background:var(--purple-soft);color:var(--purple)">R</div>
+              <div>
+                <div class="t-name">Ramazan Ç.</div>
+                <div class="t-role">Sunucu Sahibi</div>
+              </div>
+            </div>
+            <p class="t-text">"Minecraft sunucum için profesyonel olarak eklentiler geliştirdi ve bize tam kontrol
+              sağladı."</p>
+          </div>
+          <div class="testimonial-card" aria-hidden="true">
+            <div class="testimonial-header">
+              <div class="t-avatar" style="background:var(--green-soft);color:var(--green)">C</div>
+              <div>
+                <div class="t-name">Can B.</div>
+                <div class="t-role">Proje Yöneticisi</div>
+              </div>
+            </div>
+            <p class="t-text">"Discord botumuzdaki yaşanan çökmeleri ve gecikmeleri anında tespit edip çözdü. İşinde
+              gerçekten uzman."</p>
+          </div>
+          <div class="testimonial-card" aria-hidden="true">
+            <div class="testimonial-header">
+              <div class="t-avatar" style="background:var(--orange-soft);color:var(--orange)">A</div>
+              <div>
+                <div class="t-name">Ali K.</div>
+                <div class="t-role">Geliştirici</div>
+              </div>
+            </div>
+            <p class="t-text">"Açık kaynak projesini kendi sistemimize entegre etmemizde çok yardımcı oldu. Tertemiz bir
+              kod yapısı var."</p>
+          </div>
+          <div class="testimonial-card" aria-hidden="true">
+            <div class="testimonial-header">
+              <div class="t-avatar" style="background:var(--accent-soft);color:var(--accent)">E</div>
+              <div>
+                <div class="t-name">Emre Y.</div>
+                <div class="t-role">Topluluk Yöneticisi</div>
+              </div>
+            </div>
+            <p class="t-text">"Performans sorunları yaşadığımız eklentiyi baştan yazarak lagı tamamen yok etti. Gönül
+              rahatlığıyla çalışabilirsiniz."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <h2 class="sr-only">İletişim</h2>
+        <img src="images/contact.svg" alt="İletişim" class="section-icon">
+        <p class="section-desc" data-i18n="contact_desc">Bir projen mi var? Hadi konuşalım.</p>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-card">
+          <span class="contact-emoji">💬</span>
+          <h3 data-i18n="contact_title">Birlikte çalışalım</h3>
+          <p data-i18n="contact_sub">Bir proje fikrin varsa, iş teklifin varsa ya da sadece merhaba demek istiyorsan —
+            her zaman buradayım.</p>
+          <div class="contact-methods">
+            <a href="mailto:em1rhqnzw@gmail.com" class="contact-pill">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              <span data-i18n="contact_btn_email">E-posta Gönder</span>
+            </a>
+            <a href="https://discord.com/users/wulnry" target="_blank" class="contact-pill">
+              <img src="images/discord.svg" width="16" height="16" alt="Discord">
+              Discord: wulnry
+            </a>
+            <a href="https://github.com/wulnrydev" target="_blank" class="contact-pill">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Tasarlandı & Geliştirildi — <span>wulnrydev</span></p>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+
+</html>
