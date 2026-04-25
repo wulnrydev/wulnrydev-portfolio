@@ -21,6 +21,19 @@
   <meta property="og:image"
     content="https://cdn.dribbble.com/userupload/17416514/file/original-47bb3baba5123d995ac2c11a84deede1.mp4">
   <meta name="theme-color" content="#007aff">
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        const themeColor = savedTheme === 'light' ? '#f2f2f7' : '#1e1f22';
+        if (savedTheme === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', themeColor);
+      } catch (error) {
+      }
+    })();
+  </script>
 
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://wulnry.dev/">
@@ -87,6 +100,14 @@
         <span data-lang="tr" class="active"><img src="images/TR.svg" alt="TR"></span>
         <span data-lang="en"><img src="images/US.svg" alt="EN"></span>
       </div>
+
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+        <!-- Moon icon by default (for dark mode) -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
     </div>
   </nav>
 
@@ -94,34 +115,47 @@
     <!-- HERO -->
     <section id="hero">
       <div class="hero-particles" id="heroParticles"></div>
-      <div class="hero-inner">
+      <div class="hero-split">
 
-        <div class="dy-lanyard" id="lanyard-card">
-          <div class="ly-avatar-wrapper">
-            <img id="ly-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Discord Avatar">
+        <!-- LEFT: Discord Profile Card -->
+        <div class="hero-left" id="lanyard-card">
+          <div class="hero-discord-label">
+            <img src="images/discord.svg" width="22" height="22" alt="Discord">
+            <span>DİSCORD</span>
+          </div>
+
+          <div class="hero-avatar-wrap">
+            <img id="ly-avatar" src="https://cdn.discordapp.com/embed/avatars/902241075316535366.png"
+              alt="Discord Avatar">
             <div class="ly-status-dot offline" id="ly-status"></div>
           </div>
-          <div class="ly-info">
-            <div class="ly-name" id="ly-name" data-i18n="ly_loading">Yükleniyor...</div>
-            <div class="ly-activity" id="ly-activity" data-i18n="ly_search">Discord durumu aranıyor</div>
+
+          <div class="hero-profile-info">
+            <div class="hero-profile-name" id="ly-name" data-i18n="ly_loading">Yükleniyor...</div>
+            <div class="hero-profile-tag">@wulnry</div>
+            <div class="hero-profile-activity" id="ly-activity" data-i18n="ly_search">Discord durumu aranıyor</div>
           </div>
         </div>
 
-        <h1 data-i18n="hero_hi">Merhaba, ben<br><span class="accent">wulnrydev</span></h1>
-        <p class="hero-sub" data-i18n="hero_sub">Modern arayüzler, gelişmiş uygulamalar, <span class="accent">Minecraft
-            çözümleri</span> ve
-          Discord botları tasarlıyor & geliştiriyorum.</p>
+        <!-- RIGHT: Hero Text -->
+        <div class="hero-right">
+          <h1 data-i18n="hero_hi">Merhaba, ben<br><span class="accent">wulnrydev</span></h1>
+          <p class="hero-sub" data-i18n="hero_sub">Modern arayüzler, gelişmiş uygulamalar, <span
+              class="accent">Minecraft
+              çözümleri</span> ve Discord botları tasarlıyor &amp; geliştiriyorum.</p>
 
-        <div class="hero-actions">
-          <a href="https://github.com/wulnrydev" target="_blank" class="btn btn-primary">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
-            </svg>
-            GitHub
-          </a>
-          <a href="#contact" class="btn btn-secondary" data-i18n="hero_contact">İletişime Geç →</a>
+          <div class="hero-actions">
+            <a href="https://github.com/wulnrydev" target="_blank" class="btn btn-primary">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+              </svg>
+              GitHub
+            </a>
+            <a href="#contact" class="btn btn-secondary" data-i18n="hero_contact">İletişime Geç →</a>
+          </div>
         </div>
+
       </div>
     </section>
 
@@ -653,7 +687,6 @@
       </div>
       <div class="contact-inner">
         <div class="contact-card">
-          <span class="contact-emoji">💬</span>
           <h3 data-i18n="contact_title">Birlikte çalışalım</h3>
           <p data-i18n="contact_sub">Bir proje fikrin varsa, iş teklifin varsa ya da sadece merhaba demek istiyorsan —
             her zaman buradayım.</p>
