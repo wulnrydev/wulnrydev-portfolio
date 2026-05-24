@@ -518,7 +518,10 @@ const translations = {
     contact_title: "Birlikte çalışalım",
     contact_sub: "Bir proje fikrin varsa, iş teklifin varsa ya da sadece merhaba demek istiyorsan — her zaman buradayım.",
     contact_btn_email: "E-posta Gönder",
-    contact_btn: "Discord'dan Ulaş"
+    contact_btn: "Discord'dan Ulaş",
+    proj_8_desc: "Minecraft sunucuları için tasarlanmış, modern arayüze sahip ve rol bazlı gelişmiş günlük ödül sistemi.",
+    proj_9_desc: "Survival sunucularında rekabeti ve oyuncu etkileşimini zirveye taşıyan kapsamlı puan ve sıralama eklentisi.",
+    proj_10_desc: "Sunucu içi dinamizmi artıran sandık eventi eklentisi; aktif edildiğinde moblardan rastgele ödül sandıkları düşürür."
   },
   en: {
     nav_about: "About",
@@ -575,7 +578,10 @@ const translations = {
     contact_title: "Let's work together",
     contact_sub: "If you have a project idea, a business proposal, or just want to say hi — I'm always here.",
     contact_btn_email: "Send Email",
-    contact_btn: "Reach out on Discord"
+    contact_btn: "Reach out on Discord",
+    proj_8_desc: "An advanced, modern-looking, and role-based daily reward system designed for Minecraft servers.",
+    proj_9_desc: "A comprehensive points and ranking plugin that maximizes competition and player engagement on survival servers.",
+    proj_10_desc: "A dynamic chest event plugin that boosts server activity; drops randomized reward chests from mobs when activated."
   }
 };
 
