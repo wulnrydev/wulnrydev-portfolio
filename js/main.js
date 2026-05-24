@@ -556,7 +556,8 @@ const translations = {
     contact_btn: "Discord'dan Ulaş",
     proj_8_desc: "Minecraft sunucuları için tasarlanmış, modern arayüze sahip ve rol bazlı gelişmiş günlük ödül sistemi.",
     proj_9_desc: "Survival sunucularında rekabeti ve oyuncu etkileşimini zirveye taşıyan kapsamlı puan ve sıralama eklentisi.",
-    proj_10_desc: "Sunucu içi dinamizmi artıran sandık eventi eklentisi; aktif edildiğinde moblardan rastgele ödül sandıkları düşürür."
+    proj_10_desc: "Sunucu içi dinamizmi artıran sandık eventi eklentisi; aktif edildiğinde moblardan rastgele ödül sandıkları düşürür.",
+    proj_11_desc: "ExcellentCrates entegreli, kasa açılışlarında garantili anahtar parçacığı veren ve dönüştürüldüğünde otomatik komut tetikleyen Minecraft eklentisi."
   },
   en: {
     nav_about: "About",
@@ -616,7 +617,8 @@ const translations = {
     contact_btn: "Reach out on Discord",
     proj_8_desc: "An advanced, modern-looking, and role-based daily reward system designed for Minecraft servers.",
     proj_9_desc: "A comprehensive points and ranking plugin that maximizes competition and player engagement on survival servers.",
-    proj_10_desc: "A dynamic chest event plugin that boosts server activity; drops randomized reward chests from mobs when activated."
+    proj_10_desc: "A dynamic chest event plugin that boosts server activity; drops randomized reward chests from mobs when activated.",
+    proj_11_desc: "An ExcellentCrates-integrated Minecraft plugin that guarantees key fragments on crate opens and features automatic command execution upon fragment conversion."
   }
 };
 

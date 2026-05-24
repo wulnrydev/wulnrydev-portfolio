@@ -1,7 +1,8 @@
 :root {
-  --bg: #1e1f22;
-  --surface: #2b2d31;
-  --surface-solid: #313338;
+  --bg: #0e0e0e;
+  --surface: #181818;
+  --surface-solid: #1c1c1e;
+  --grid-color: rgba(255, 255, 255, 0.03);
   --border: #3f4147;
   --border-strong: #404249;
   --text-primary: #f2f2f7;
@@ -65,6 +66,7 @@
 }
 
 [data-theme="light"] {
+  --grid-color: rgba(0, 0, 0, 0.04);
   --bg: #f2f2f7;
   --surface: rgba(255, 255, 255, 0.72);
   --surface-solid: #ffffff;
@@ -134,12 +136,28 @@ html {
 
 body {
   font-family: var(--font);
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.grid-section-wrapper {
+  position: relative;
+}
+.grid-section-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: center top;
+  z-index: -1;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
 }
 
 body::before {
