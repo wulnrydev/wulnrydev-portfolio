@@ -66,10 +66,11 @@ function onScroll() {
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
+// ── INTERSECTION OBSERVER: staggered reveal ──
 const io = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 70);
+      setTimeout(() => entry.target.classList.add('visible'), i * 90);
       io.unobserve(entry.target);
     }
   });
@@ -87,6 +88,7 @@ const skillIo = new IntersectionObserver((entries) => {
 }, { threshold: 0.05 });
 document.querySelectorAll('.skills-icon-grid').forEach(g => skillIo.observe(g));
 
+// ── HAMBURGER MENU ──
 const hamburger = document.getElementById('hamburger');
 const mobileNavMenu = document.getElementById('navLinks');
 
@@ -112,6 +114,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+// ── HERO PARTICLES ──
 const container = document.getElementById('heroParticles');
 const colors = ['rgba(0,122,255,0.16)', 'rgba(175,82,222,0.13)', 'rgba(52,199,89,0.13)', 'rgba(255,159,10,0.13)', 'rgba(255,55,95,0.11)'];
 for (let i = 0; i < 20; i++) {
@@ -122,17 +125,51 @@ for (let i = 0; i < 20; i++) {
   container.appendChild(p);
 }
 
-document.querySelectorAll('.skill-card, .project-card').forEach(card => {
+// ── 3D TILT: skill cards ──
+document.querySelectorAll('.skill-card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const r = card.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width - 0.5;
     const y = (e.clientY - r.top) / r.height - 0.5;
-    const sc = card.classList.contains('skill-card') ? 1.08 : 1.01;
-    card.style.transform = `translateY(-5px) scale(${sc}) rotateX(${-y * 9}deg) rotateY(${x * 9}deg)`;
+    card.style.transform = `translateY(-6px) scale(1.08) rotateX(${-y * 9}deg) rotateY(${x * 9}deg)`;
   });
   card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
 
+// ── PROJECT CARDS: language top-accent class ──
+(function assignLangClasses() {
+  document.querySelectorAll('.project-card').forEach(card => {
+    const langEl = card.querySelector('.project-lang');
+    if (!langEl) return;
+    const text = langEl.textContent.toLowerCase();
+    if (text.includes('java') && !text.includes('javascript')) card.classList.add('lang-java');
+    else if (text.includes('javascript') || text.includes('js')) card.classList.add('lang-js');
+    else if (text.includes('typescript') || text.includes('ts')) card.classList.add('lang-ts');
+    else if (text.includes('vue')) card.classList.add('lang-vue');
+    else if (text.includes('html')) card.classList.add('lang-html');
+    else if (text.includes('python') || text.includes('py')) card.classList.add('lang-py');
+  });
+})();
+
+// ── PROJECT CARDS: spotlight mouse-tracking effect ──
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%';
+    const y = ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%';
+    card.style.setProperty('--mouse-x', x);
+    card.style.setProperty('--mouse-y', y);
+    // subtle 3D tilt
+    const rx = (e.clientX - r.left) / r.width - 0.5;
+    const ry = (e.clientY - r.top) / r.height - 0.5;
+    card.style.transform = `translateY(-5px) scale(1.01) rotateX(${-ry * 4}deg) rotateY(${rx * 4}deg)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+// ── SKILLS NETWORK CANVAS ──
 function initSkillsNetworkCanvas() {
   const canvas = document.getElementById('skillsNetworkCanvas');
   if (!canvas) return;
@@ -218,11 +255,7 @@ function initSkillsNetworkCanvas() {
       const scale = 0.92 + (z + 0.5) * 0.12;
 
       const projectedPoint = {
-        x,
-        y,
-        z,
-        scale,
-        angle,
+        x, y, z, scale, angle,
         size: point.size,
         tint: point.tint,
         ringIndex: point.ringIndex,
@@ -371,6 +404,7 @@ function initSkillsNetworkCanvas() {
 
 initSkillsNetworkCanvas();
 
+// ── DISCORD LANYARD ──
 const discordId = "902241075316535366";
 let lanyardHeartbeat = null;
 
@@ -461,6 +495,7 @@ function updateDiscordStatus(d) {
     lyActivity.style.display = 'none';
   }
 }
+
 /* ── LOCALIZATION (i18n) ── */
 const translations = {
   tr: {
@@ -616,7 +651,6 @@ function applyTranslations(lang) {
       lyActivityEl.textContent = translations.en.ly_search;
     }
 
-
     elements.forEach(el => el.classList.remove('lang-fading'));
   }, 250);
 }
@@ -640,4 +674,105 @@ window.addEventListener('load', () => {
   if (currentLang !== 'tr') {
     applyTranslations(currentLang);
   }
+});
+
+// ── 2026 UI ENHANCEMENTS: SPATIAL DESIGN & SOUNDS ──
+
+// 1. Spatial Parallax for Ambient Backgrounds
+const ambients = [
+  document.querySelector('.ambient-1'),
+  document.querySelector('.ambient-2'),
+  document.querySelector('.ambient-3')
+];
+
+let targetX = 0, targetY = 0;
+let currentX = 0, currentY = 0;
+
+window.addEventListener('mousemove', (e) => {
+  targetX = (e.clientX / window.innerWidth - 0.5) * 2; // -1 to 1
+  targetY = (e.clientY / window.innerHeight - 0.5) * 2; // -1 to 1
+});
+
+function animateParallax() {
+  currentX += (targetX - currentX) * 0.05;
+  currentY += (targetY - currentY) * 0.05;
+
+  if (ambients[0]) {
+    ambients[0].style.translate = `${currentX * -40}px ${currentY * -40}px`;
+  }
+  if (ambients[1]) {
+    ambients[1].style.translate = `${currentX * 30}px ${currentY * 30}px`;
+  }
+  if (ambients[2]) {
+    ambients[2].style.translate = `${currentX * -20}px ${currentY * -20}px`;
+  }
+
+  requestAnimationFrame(animateParallax);
+}
+animateParallax();
+
+// 2. Web Audio API Synth for UI Sounds
+let audioCtx = null;
+
+function initAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+}
+
+let lastHoverTime = 0;
+
+function playUISound(type) {
+  if (!audioCtx) return;
+  
+  if (type === 'hover') {
+    const now = Date.now();
+    if (now - lastHoverTime < 75) return; // 75ms cooldown to prevent noise spam
+    lastHoverTime = now;
+  }
+  
+  const osc = audioCtx.createOscillator();
+  const gainNode = audioCtx.createGain();
+  
+  osc.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+  
+  if (type === 'hover') {
+    // Subtle high-tech tick
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
+    gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+    gainNode.gain.linearRampToValueAtTime(0.015, audioCtx.currentTime + 0.01);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.05);
+  } else if (type === 'click') {
+    // Satisfying mechanical click
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.1);
+    gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+    gainNode.gain.linearRampToValueAtTime(0.06, audioCtx.currentTime + 0.01);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.1);
+  }
+}
+
+// Bind sounds to interactive elements
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize audio on first user interaction (browser policy requirement)
+  document.body.addEventListener('click', initAudio, { once: true });
+  document.body.addEventListener('mousemove', initAudio, { once: true });
+
+  const interactables = document.querySelectorAll('.project-card, #themeToggle, .lang-toggle span');
+  
+  interactables.forEach(el => {
+    el.addEventListener('mouseenter', () => playUISound('hover'));
+    el.addEventListener('mousedown', () => playUISound('click'));
+  });
 });

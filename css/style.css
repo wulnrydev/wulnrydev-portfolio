@@ -55,6 +55,13 @@
   --font: 'Figtree', sans-serif;
   --nav-bg: rgba(30, 31, 34, 0.8);
   --nav-bg-scrolled: rgba(30, 31, 34, 0.95);
+  /* Project card language accent colors */
+  --lang-java: #ed8b00;
+  --lang-js: #f7df1e;
+  --lang-ts: #3178c6;
+  --lang-vue: #42b883;
+  --lang-html: #e34f26;
+  --lang-py: #3572a5;
 }
 
 [data-theme="light"] {
@@ -452,12 +459,56 @@ h2 {
   flex-shrink: 0;
 }
 
+/* Rotating gradient ring around the Discord avatar */
+.hero-avatar-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    var(--accent),
+    var(--purple),
+    var(--green),
+    var(--orange),
+    var(--accent)
+  );
+  animation: avatarRingRotate 4s linear infinite;
+  z-index: 0;
+}
+
+.hero-avatar-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    var(--accent),
+    var(--purple),
+    var(--green),
+    var(--orange),
+    var(--accent)
+  );
+  animation: avatarRingRotate 4s linear infinite;
+  z-index: 0;
+  opacity: 0.35;
+  filter: blur(8px);
+}
+
+@keyframes avatarRingRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
 .hero-avatar-wrap img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--border-strong);
+  border: 3px solid var(--surface);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
@@ -602,7 +653,7 @@ h2 {
 
 h1 {
   font-size: clamp(40px, 6vw, 64px);
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -2px;
   line-height: 1.1;
   color: var(--text-primary);
@@ -622,7 +673,7 @@ h1 .accent {
 .hero-sub {
   font-size: 18px;
   color: var(--text-secondary);
-  line-height: 1.65;
+  line-height: 1.7;
   max-width: 480px;
   margin: 0 0 40px 0;
   font-weight: 400;
@@ -1262,11 +1313,39 @@ h1 .accent {
   transform: translateY(28px);
   display: flex;
   flex-direction: column;
+  position: relative;
+  /* Top accent bar — overridden per-language via JS class */
+  border-top: 2px solid var(--border);
 }
+
+/* Language-specific top accent stripe */
+.project-card.lang-java    { border-top-color: var(--lang-java); }
+.project-card.lang-js      { border-top-color: var(--lang-js); }
+.project-card.lang-ts      { border-top-color: var(--lang-ts); }
+.project-card.lang-vue     { border-top-color: var(--lang-vue); }
+.project-card.lang-html    { border-top-color: var(--lang-html); }
+.project-card.lang-py      { border-top-color: var(--lang-py); }
 
 .project-card.visible {
   opacity: 1;
   transform: translateY(0)
+}
+
+/* Spotlight hover effect */
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.07) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.project-card:hover::after {
+  opacity: 1;
 }
 
 .project-card:hover {
@@ -1426,8 +1505,14 @@ h1 .accent {
   transition: all 0.25s cubic-bezier(.22, 1, .36, 1);
 }
 
+.contact-pill svg,
 .contact-pill img {
-  transition: filter 0.25s ease;
+  transition: transform 0.35s cubic-bezier(.34, 1.56, .64, 1), filter 0.25s ease;
+  flex-shrink: 0;
+}
+
+.contact-pill img {
+  transition: transform 0.35s cubic-bezier(.34, 1.56, .64, 1), filter 0.25s ease;
 }
 
 .contact-pill:hover {
@@ -1438,31 +1523,139 @@ h1 .accent {
   box-shadow: var(--contact-pill-hover-shadow);
 }
 
+.contact-pill:hover svg {
+  transform: rotate(15deg) scale(1.15);
+}
+
 .contact-pill:hover img {
   filter: brightness(0) invert(1);
+  transform: rotate(15deg) scale(1.15);
 }
 
 /* FOOTER */
 footer {
   border-top: 1px solid var(--border);
   background: var(--surface);
-  padding: 32px 24px;
+  padding: 40px 24px 32px;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
-footer p {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin: 0;
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--purple), transparent);
+}
+
+.footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   position: relative;
   z-index: 1;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(.22, 1, .36, 1);
+}
+
+.footer-social-link svg,
+.footer-social-link img {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.footer-social-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+.footer-social-link:hover svg,
+.footer-social-link:hover img {
+  transform: rotate(12deg) scale(1.15);
+}
+
+.footer-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--border);
+}
+
+footer p {
+  font-size: 13.5px;
+  color: var(--text-tertiary);
+  margin: 0;
 }
 
 footer p span {
   color: var(--accent);
   font-weight: 600;
+}
+
+.footer-back-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(.22, 1, .36, 1);
+  margin-top: 4px;
+}
+
+.footer-back-top:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+.footer-back-top svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.footer-back-top:hover svg {
+  transform: translateY(-3px);
 }
 
 @media(max-width:680px) {
@@ -1553,6 +1746,7 @@ footer p span {
   display: block;
   margin-bottom: -1px;
   /* prevent microscopic gap */
+
 }
 
 #testimonials {
